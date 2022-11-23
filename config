@@ -1,0 +1,29 @@
+local config = isfile(settings.configName)
+
+if config then
+    config = readfile(settings.configName)
+else
+    config = http:JSONEncode({
+        images = {
+            remote_event_image = 'rbxassetid://11642777529',
+            remote_function_image = 'rbxassetid://11642778553',
+            function_image = 'rbxassetid://11642835449',
+            event_image = 'rbxassetid://11642837185'
+        },
+        colors = {
+            border = Color3.fromRGB(0,0,0),
+            background = Color3.fromRGB(23,23,23),
+            inners = Color3.fromRGB(14,14,14),
+            titleColor = Color3.fromRGB(31,31,31),
+
+            textColor = Color3.fromRGB(204,204,204),
+            classTextColor = Color3.fromRGB(152,152,152)
+        },
+        scriptingColors = {
+
+        }
+    })
+    local file = writefile(settings.configName,config)
+end
+
+return config
